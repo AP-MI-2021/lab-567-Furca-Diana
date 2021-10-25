@@ -7,7 +7,7 @@ def adaugarezervare(id, nume, clasa, pret, checkin, lista):
     :param clasa: string
     :param pret: int
     :param checkin: string
-    :param lista: lista de rezervari
+    :param lista: lista de rezervari noi facute
     :return: lista ce contine elementele vechi si noua rezervare
     """
     rezervare = creeaza_rezervare(id, nume, clasa, pret, checkin)
