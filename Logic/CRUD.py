@@ -1,17 +1,22 @@
 from Domain.companie_aeriana import *
+
+
 def adaugarezervare(id, nume, clasa, pret, checkin, lista):
     """
     Adauga o rezervare intr-o lista
     :param id: string
     :param nume: string
     :param clasa: string
-    :param pret: int
+    :param pret: float
     :param checkin: string
     :param lista: lista de rezervari
     :return: lista ce contine elementele vechi si noua rezervare
     """
+    if getById(id, lista) is not None:
+        raise ValueError("Acest id deja exista.")
     rezervare = creeaza_rezervare(id, nume, clasa, pret, checkin)
     return lista + [rezervare]
+
 
 def getById(id, lista):
         """
@@ -33,8 +38,11 @@ def stergerezervare(id, lista):
         :param lista: lista cu rezervari
         :return: lista obtinuta dupa stergerea unei rezervari
         """
+        if getById(id, lista) is None:
+            raise ValueError("Acst id nu exista")
         return [rezervare for rezervare in lista if getid(rezervare) != id]
     # parcurg lista, daca rezervarea curenta nu trebuie stearsa, o punem in noua lista
+
 
 def modificarezervare(id, nume, clasa, pret, checkin, lista):
         '''
@@ -47,6 +55,8 @@ def modificarezervare(id, nume, clasa, pret, checkin, lista):
         :param lista:lista de rezervari
         :return:lista modificata
         '''
+        if getById(id, lista) is None:
+            raise ValueError("Acest id nu exista")
         listaNoua = []
         for rezervare in lista:
             if getid(rezervare) == id:
