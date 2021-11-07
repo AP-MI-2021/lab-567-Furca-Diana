@@ -26,6 +26,7 @@ def uiOneLine(lista):
 def printMeniu():
     print("1. Adauga/ Sterge/ Afiseaza toate rezervarile")
     print("x. Iesire")
+    print("help. Printare meniu")
 
 
 def runMenu2(lista):
