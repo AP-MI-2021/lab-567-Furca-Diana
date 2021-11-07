@@ -1,6 +1,6 @@
 from Domain.companie_aeriana import toString
 from Logic.CRUD import adaugarezervare, stergerezervare, modificarezervare
-from Logic.diverseFunctionalitati import TrecereRezervari, ieftinirePret
+from Logic.diverseFunctionalitati import TrecereRezervari, ieftinirePret, maxPretPerClasa, ordonareDescrescatorDupaPret
 
 
 def printMenu():
@@ -9,17 +9,19 @@ def printMenu():
     print("3.Modifica rezervare")
     print("4.Trecerea tuturor rezervarilor facute pe un nume citit, la o clasa superioara")
     print("5.Ieftinirea tuturor rezervarilor la care s-a facut checkin, cu un procentaj citit")
+    print("6.Determinarea pretului maxim pentru fiecare clasa")
+    print("7.Ordonarea rezervarilor descrescator dupa pret")
     print("a.Afisarea rezervarilor")
     print("x.Iesire")
 
 
 def uiAdaugaRezervare(lista):
     try:
-        id = input("Dati id-ul:")
-        nume = input("Dati nume:")
-        clasa = input("Dati clasa:")
+        id = int(input("Dati id-ul:"))
+        nume = str(input("Dati nume:"))
+        clasa = str(input("Dati clasa:"))
         pret = float(input("Dati pretul:"))
-        checkin = input("Dati checkin:")
+        checkin = str(input("Dati checkin:"))
         return adaugarezervare(id, nume, clasa, pret, checkin, lista)
     except ValueError as ve:
         print("Eroare: {}".format(ve))
@@ -64,12 +66,33 @@ def showAll(lista):
 
 
 def uiIeftinirePret(lista):
-    procentaj = int(input("Dati procentul cu care o sa se ieftineasca pretul rezervarilor cu checkin facut :"))
-    rezultat = ieftinirePret(procentaj, lista)
-    showAll(rezultat)
+    try:
+        procentaj = int(input("Dati procentul cu care o sa se ieftineasca pretul rezervarilor cu checkin facut :"))
+        return ieftinirePret(procentaj, lista)
+    except ValueError as ve:
+        print("Eroare: {}".format(ve))
+        return lista
+
+
+def uiMaxPretPerClasa(lista):
+    try:
+        rezultat = maxPretPerClasa(lista)
+        for clasa in rezultat:
+            print("Clasa {} are pretul maxim de: {} lei".format(clasa, rezultat[clasa]))
+    except ValueError as ve:
+        print("Eroare: {}".format(ve))
+        return lista
 
     #showAll(rezultat)
     #return lista
+
+
+def uiOrdonareDescarescatorDupaPret(lista):
+    try:
+        showAll(ordonareDescrescatorDupaPret(lista))
+    except ValueError as ve:
+        print("Eroare: {}".format(ve))
+        return lista
 
 
 def runMenu(lista):
@@ -86,6 +109,10 @@ def runMenu(lista):
             lista = uiTrecereRezervari(lista)
         elif optiune == "5":
             lista = uiIeftinirePret(lista)
+        elif optiune == "6":
+            lista = uiMaxPretPerClasa(lista)
+        elif optiune == "7":
+            lista = uiOrdonareDescarescatorDupaPret(lista)
         elif optiune == "a":
             showAll(lista)
         elif optiune == "x":

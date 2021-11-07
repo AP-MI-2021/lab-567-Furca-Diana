@@ -15,8 +15,14 @@ def creeaza_rezervare(id, nume, clasa, pret, checkin):
 #        "pret": pret,
 #        "checkin": checkin
 #    }
-    return [id, nume, clasa, pret, checkin]
-
+    #return [id, nume, clasa, pret, checkin]
+    lst = []
+    lst.append(("id: ", id))
+    lst.append(("nume: ", nume))
+    lst.append(("clasa: ", clasa))
+    lst.append(("pret: ", pret))
+    lst.append(("checkin: ", checkin))
+    return lst
 
 def getid(rezervare):
     """
@@ -25,7 +31,7 @@ def getid(rezervare):
     :return: id-ul rezervarii
     """
     #return rezervare["id"]
-    return rezervare[0]
+    return rezervare[0][1]
 
 
 def getnume(rezervare):
@@ -35,7 +41,7 @@ def getnume(rezervare):
     :return: numele rezervarii
     """
     #return rezervare["nume"]
-    return rezervare[1]
+    return rezervare[1][1]
 
 
 def getclasa(rezervare):
@@ -45,7 +51,7 @@ def getclasa(rezervare):
     :return: clasa unei rezervari, aceasta putand fi: economy, economy plus, business
     """
     #return rezervare["clasa"]
-    return rezervare[2]
+    return rezervare[2][1]
 
 
 def getpret(rezervare):
@@ -55,7 +61,7 @@ def getpret(rezervare):
     :return: pretul unei rezervari
     """
     #return rezervare["pret"]
-    return rezervare[3]
+    return rezervare[3][1]
 
 
 def getcheckin(rezervare):
@@ -65,7 +71,7 @@ def getcheckin(rezervare):
     :return: checkin-ul unei rezervari, acesta putand fi "da" daca s-a facut sau nu in caz contrar
     """
     #return rezervare["checkin"]
-    return rezervare[4]
+    return rezervare[4][1]
 
 
 def toString(rezervare):
