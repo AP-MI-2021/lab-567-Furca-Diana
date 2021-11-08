@@ -77,7 +77,7 @@ def uiIeftinirePret(lista):
 def uiMaxPretPerClasa(lista):
     try:
         rezultat = maxPretPerClasa(lista)
-        for clasa in rezultat:
+        for clasa in rezultat:    #merg prin dictionar, prin cheile lui
             print("Clasa {} are pretul maxim de: {} lei".format(clasa, rezultat[clasa]))
     except ValueError as ve:
         print("Eroare: {}".format(ve))
@@ -110,7 +110,7 @@ def runMenu(lista):
         elif optiune == "5":
             lista = uiIeftinirePret(lista)
         elif optiune == "6":
-            lista = uiMaxPretPerClasa(lista)
+            lista = uiMaxPretPerClasa(lista)   # nu modifica lista, lista poate sa nu fie reasignata
         elif optiune == "7":
             lista = uiOrdonareDescarescatorDupaPret(lista)
         elif optiune == "a":

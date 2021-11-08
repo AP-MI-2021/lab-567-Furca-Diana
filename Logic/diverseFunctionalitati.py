@@ -55,15 +55,15 @@ def ieftinirePret(procentaj, lista):
     for rezervare in lista:
         if getcheckin(rezervare) == "da":
             reducere = (procentaj/100) * getpret(rezervare)
-            rezervareNoua = creeaza_rezervare(
-                getid(rezervare),
+            rezervareNoua = creeaza_rezervare(        #modificam rezervarea, cream o noua rezervare
+                getid(rezervare),                     #preluam id-ul de la rezervarea veche, numele la fel...
                 getnume(rezervare),
                 getclasa(rezervare),
                 getpret(rezervare)-reducere,
                 getcheckin(rezervare)
             )
 
-            listaNoua.append(rezervareNoua)
+            listaNoua.append(rezervareNoua)    #adaugam in lista noua
 
         elif getcheckin(rezervare) == "nu":
             listaNoua.append(rezervare)
@@ -77,8 +77,10 @@ def maxPretPerClasa(lista):
     :return: pretul maxim pentru fiecare clasa
     '''
 
-    rezultat = {}
-    for rezervare in lista:
+    rezultat = {}              #dictionar gol
+    for rezervare in lista:    #mergem prin rezervare, luam pretul si clasa; in dictionar retinem pt fiecare
+                               #clasa retinem pretul maxim de la clasa respectiva
+                               # daca acel pret e mai mare decat maximul, se inlocuieste maximul cu pretul curent
         pret = getpret(rezervare)
         clasa = getclasa(rezervare)
         if clasa in rezultat:
@@ -97,3 +99,10 @@ def ordonareDescrescatorDupaPret(lista):
     '''
 
     return sorted(lista, key=lambda rezervare: getpret(rezervare), reverse=True)
+
+#lista curenta nu se modifica
+# sorted are 3 argumente: lista, cheia si reversul
+# cheia ne spune dupa ce criteriu sa ordonam
+#dandui-se aceasta cheie, pt fiecare elem din lista, sorted va luat in considerare rezultatul calculului de pret, ca sa
+#poata face ordonarea
+#reverse ne spune daca e crescator sau descrescator

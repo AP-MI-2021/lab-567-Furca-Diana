@@ -5,9 +5,10 @@ from UI.console import showAll
 def oneLine(lista):
     while True:
         lineComand = input('Dati comanda(comenzile separate prin ";" , elementele prin ",": )')
-        lineComand = lineComand.split(';')
+        lineComand = lineComand.split(';')    #impartim sirul folosind ; ca delimitator
         for l in lineComand:
-            l = l.split(',')
+            l = l.split(',')    #impartim sirul folosind , ca delimitator
+            #avem asadar o lista de subincarcari, rezultatul este o lista de siruri
             if l[0] == 'add':
                 if len(l) == 6:
                     try:

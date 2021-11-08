@@ -38,7 +38,7 @@ def testMaxPretPerClasa():
 
     rezultat = maxPretPerClasa(lista)
 
-    assert len(rezultat) == 3
+    assert len(rezultat) == 3   #verific ca dictionarul are 3 chei
 
     assert rezultat["economy"] == 180
     assert rezultat["economy plus"] == 270
@@ -53,6 +53,6 @@ def testOrdonareDescrescatorDupaPret():
 
     rezultat = ordonareDescrescatorDupaPret(lista)
 
-    assert getid(rezultat[0]) == "3"
+    assert getid(rezultat[0]) == "3"  # ne intereseaza pozitia
     assert getid(rezultat[1]) == "2"
     assert getid(rezultat[2]) == "1"
