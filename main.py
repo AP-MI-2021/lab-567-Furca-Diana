@@ -25,7 +25,7 @@ def main():
             runMenu(lista)
         elif optiune == "2":
             runMenu2(lista)
-        elif optiune == "help":
+        elif optiune == "h":
             print("Alege un meniu dintre Interfata 1 si Interfata 2:")
         elif optiune == "x":
             break

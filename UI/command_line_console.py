@@ -46,7 +46,7 @@ def runMenu2(lista):
     while True:
         printMeniu2()
         optiune = input("Alegeti optiunea: ")
-        if optiune == "help":
+        if optiune == "h":
             print("Daca vreti sa adaugati o rezervare, scrieti comanda add, urmata de id, nume, clasa, pret, checkin")
             print("Daca vreti sa stergeti o rezervare, scrieti comanda delete, urmata de id")
             print("Daca vreti sa afisati toata lista, scrieti showall")
