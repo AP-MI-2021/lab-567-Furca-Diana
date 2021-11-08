@@ -4,9 +4,9 @@ from UI.console import showAll
 
 def oneLine(lista):
     while True:
-        lineCom = input('Dati comanda(comenzile separate prin ";" , elementele prin ",": )')
-        lineCom = lineCom.split(';')
-        for l in lineCom:
+        lineComand = input('Dati comanda(comenzile separate prin ";" , elementele prin ",": )')
+        lineComand = lineComand.split(';')
+        for l in lineComand:
             l = l.split(',')
             if l[0] == 'add':
                 if len(l) == 6:
@@ -33,7 +33,7 @@ def oneLine(lista):
                 else:
                     print('Eroare, numar invalid de parametrii')
             else:
-                print('Comanda gresita, reincercati')
+                print('Comanda gresita, va rugam reincercati')
 
 
 def printMeniu2():
