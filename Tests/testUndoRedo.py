@@ -76,7 +76,7 @@ def testUndoRedo():
     assert len(undoList) == 3
     assert len(lista) == 3
 
-    # 9 facem redo
+    # 9 facem redo, care practic nu se poate face, lista de redo e goala
 
     if len(redoList) > 0:
         undoList.append(lista)
@@ -85,7 +85,7 @@ def testUndoRedo():
     assert len(undoList) == 3
     assert len(lista) == 3
 
-    # 10 2 undo
+    # 10 2 undo, care scot ultimele 2 rezervari
 
     redoList.append(lista)
     lista = undoList.pop()
@@ -101,7 +101,7 @@ def testUndoRedo():
     assert getid(lista[0]) == "1"
     assert undoList == [[]]
 
-    # 11 redo
+    # 11 redo, care aduce inapoi penultima rezervare
 
     undoList.append(lista)
     lista = redoList.pop()
@@ -109,7 +109,7 @@ def testUndoRedo():
     assert len(undoList) == 2
     assert len(lista) == 2
 
-    # 12 redo
+    # 12 redo, redo, care aduce inapoi si ultima rezervare
 
     undoList.append(lista)
     lista = redoList.pop()
@@ -117,7 +117,7 @@ def testUndoRedo():
     assert len(undoList) == 3
     assert len(lista) == 3
 
-    # 13 se fac 2 undo
+    # 13 se fac 2 undo, ca sa dispara ultimele 2 rezervari
 
     redoList.append(lista)
     lista = undoList.pop()
@@ -139,7 +139,7 @@ def testUndoRedo():
     lista = rezultat
     redoList.clear()
 
-    # 15 redo
+    # 15 redo, care nu face nimic
 
     if len(redoList) > 0:
         undoList.append(lista)
@@ -147,7 +147,7 @@ def testUndoRedo():
     assert len(lista) == 2
     assert len(undoList) == 2
 
-    # 16 se face undo
+    # 16 se face undo, dispare ultima rezervare
 
     redoList.append(lista)
     lista = undoList.pop()
@@ -155,7 +155,7 @@ def testUndoRedo():
     assert len(redoList) == 1
     assert len(undoList) == 1
 
-    # 17 undo
+    # 17 undo, dispare si penultima
 
     redoList.append(lista)
     lista = undoList.pop()
@@ -163,7 +163,7 @@ def testUndoRedo():
     assert len(redoList) == 2
     assert len(undoList) == 0
 
-    # 18 2 redo
+    # 18 2 redo, cele doua rezervari revin in lista
 
     undoList.append(lista)
     lista = redoList.pop()

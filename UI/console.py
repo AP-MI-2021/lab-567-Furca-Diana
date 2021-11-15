@@ -66,10 +66,12 @@ def uiModificaRezervare(lista, undoList, redoList):
         return lista
 
 
-def uiTrecereRezervari(lista):
+def uiTrecereRezervari(lista, undoList, redoList):
     try:
         numetrecere = input("Dati numele persoanei ale carei rezervari sa fie trecute la o clasa superioara:")
         modificare = TrecereRezervari(numetrecere, lista)
+        undoList.append(lista)
+        redoList.clear()
         showAll(modificare)
     except ValueError as ve:
         print("Eroare: {}".format(ve))
@@ -134,7 +136,7 @@ def runMenu(lista):
         elif optiune == "3":
             lista = uiModificaRezervare(lista, undoList, redoList)
         elif optiune == "4":
-            uiTrecereRezervari(lista)
+            uiTrecereRezervari(lista,undoList, redoList)
         elif optiune == "5":
             lista = uiIeftinirePret(lista)
         elif optiune == "6":

@@ -115,12 +115,15 @@ def afisareSumaPretPentruFiecareNume(lista):
     :param lista:lista de rezervari
     :return:suma preturilor pentru fiecare nume
     '''
-    rezultat = {}
-    for rezervare in lista:
+    rezultat = {}   #dictionar gol
+    for rezervare in lista:   # parcurgem lista de rezervari
         pret = getpret(rezervare)
         nume = getnume(rezervare)
-        if nume in rezultat:
+        if nume in rezultat:   # daca exista o valoare la cheia respectiva
             rezultat[nume] = rezultat[nume] + pret
         else:
             rezultat[nume] = pret
     return rezultat
+
+# mergem prin rezervare, luam pretul si numele
+# in dictionar retinem pentru fiecare nume suma
