@@ -18,7 +18,7 @@ def main():
     lista = adaugarezervare("4", "Denisa", "business", 550, "nu", lista)
     lista = adaugarezervare("5", "Ada", "economy plus", 800, "da", lista)
 
-    while True:
+    '''while True:
         alegmeniu()
         optiune = input("Alege interfata: ")
         if optiune == "1":
@@ -30,8 +30,13 @@ def main():
         elif optiune == "x":
             break
         else:
-            print("Optiune greasita! Reincercati!")
+            print("Optiune greasita! Reincercati!")'''
 
+    optiune = input("Alege optiune: ")
+    if optiune == "1":
+        runMenu(lista)
+    elif optiune == "2":
+        runMenu2(lista)
 
 if __name__ == '__main__':
     main()

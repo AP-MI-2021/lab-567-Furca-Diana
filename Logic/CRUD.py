@@ -35,7 +35,7 @@ def getById(id, lista):
         :return: rezervarea data cu id-ul dintr-o lista, in caz contrar None
         """
         for rezervare in lista:
-            if getid(rezervare) == id:
+            if getid(rezervare) == str(id):
                 return rezervare
         return None
 
@@ -48,8 +48,8 @@ def stergerezervare(id, lista):
         :return: lista obtinuta dupa stergerea unei rezervari
         """
         if getById(id, lista) is None:
-            raise ValueError("Acst id nu exista")
-        return [rezervare for rezervare in lista if getid(rezervare) != id]
+            raise ValueError("Acest id nu exista")
+        return [rezervare for rezervare in lista if getid(rezervare) != str(id)]
     # parcurg lista, daca rezervarea curenta nu trebuie stearsa, o punem in noua lista
 
 

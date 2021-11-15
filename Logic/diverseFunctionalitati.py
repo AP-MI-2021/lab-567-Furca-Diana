@@ -78,9 +78,10 @@ def maxPretPerClasa(lista):
     '''
 
     rezultat = {}              #dictionar gol
-    for rezervare in lista:    #mergem prin rezervare, luam pretul si clasa; in dictionar retinem pt fiecare
-                               #clasa retinem pretul maxim de la clasa respectiva
-                               # daca acel pret e mai mare decat maximul, se inlocuieste maximul cu pretul curent
+    for rezervare in lista:
+        #mergem prin rezervare, luam pretul si clasa; in dictionar retinem pt fiecare
+        #clasa retinem pretul maxim de la clasa respectiva
+        # daca acel pret e mai mare decat maximul, se inlocuieste maximul cu pretul curent
         pret = getpret(rezervare)
         clasa = getclasa(rezervare)
         if clasa in rezultat:
@@ -106,3 +107,20 @@ def ordonareDescrescatorDupaPret(lista):
 #dandui-se aceasta cheie, pt fiecare elem din lista, sorted va luat in considerare rezultatul calculului de pret, ca sa
 #poata face ordonarea
 #reverse ne spune daca e crescator sau descrescator
+
+
+def afisareSumaPretPentruFiecareNume(lista):
+    '''
+    Determina afisarea sumei preturilor pentru fiecare nume
+    :param lista:lista de rezervari
+    :return:suma preturilor pentru fiecare nume
+    '''
+    rezultat = {}
+    for rezervare in lista:
+        pret = getpret(rezervare)
+        nume = getnume(rezervare)
+        if nume in rezultat:
+            rezultat[nume] = rezultat[nume] + pret
+        else:
+            rezultat[nume] = pret
+    return rezultat

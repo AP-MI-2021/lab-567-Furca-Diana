@@ -1,6 +1,7 @@
 from Domain.companie_aeriana import getclasa, getid, getpret
 from Logic.CRUD import adaugarezervare, getById
-from Logic.diverseFunctionalitati import TrecereRezervari, ieftinirePret, maxPretPerClasa, ordonareDescrescatorDupaPret
+from Logic.diverseFunctionalitati import TrecereRezervari, ieftinirePret, maxPretPerClasa, ordonareDescrescatorDupaPret, \
+    afisareSumaPretPentruFiecareNume
 
 
 def testTrecereRezervari():
@@ -56,3 +57,16 @@ def testOrdonareDescrescatorDupaPret():
     assert getid(rezultat[0]) == "3"  # ne intereseaza pozitia
     assert getid(rezultat[1]) == "2"
     assert getid(rezultat[2]) == "1"
+
+
+def testAfisareSumaPretPentruFiecareNume():
+    lista = []
+    lista = adaugarezervare("1", "Oana", "economy", 200.00, "da", lista)
+    lista = adaugarezervare("2", "Oana", "economy plus", 400, "da", lista)
+    lista = adaugarezervare("3", "Aura", "business", 600.00, "nu", lista)
+    lista = adaugarezervare("4", "Aura", "economy", 200.00, "nu", lista)
+
+    rezultat = afisareSumaPretPentruFiecareNume(lista)
+
+    assert rezultat["Oana"] == 600.00
+    assert rezultat["Aura"] == 800.00
